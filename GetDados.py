@@ -3,14 +3,12 @@ from datetime import datetime
 import pandas as pd
 from pymodbus.client.serial import ModbusSerialClient
 import dash
-from dash import dcc, html, Input, Output, State, dash_table, no_update
+from dash import dcc, html, Input, Output, State, dash_table
 import dash_bootstrap_components as dbc
 import serial.tools.list_ports
 from dash.exceptions import PreventUpdate
 import math
 import io
-import time
-import xlsxwriter
 
 # Inicialização do app Dash
 app = dash.Dash(__name__, suppress_callback_exceptions=True,
@@ -617,4 +615,4 @@ def export_to_excel(n_clicks):
     return dcc.send_bytes(output.read(), filename="dados_coletados.xlsx")
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
