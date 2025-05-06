@@ -9,6 +9,8 @@ import serial.tools.list_ports
 from dash.exceptions import PreventUpdate
 import math
 import io
+import time
+import xlsxwriter
 
 # Inicialização do app Dash
 app = dash.Dash(__name__, suppress_callback_exceptions=True,
