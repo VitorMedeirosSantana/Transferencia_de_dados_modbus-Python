@@ -10,6 +10,7 @@ from dash.exceptions import PreventUpdate
 import math
 import io
 import time
+import xlsxwriter
 
 # Inicialização do app Dash
 app = dash.Dash(__name__, suppress_callback_exceptions=True,
@@ -455,7 +456,7 @@ def manage_connections(piranometer_clicks, cr1000_clicks, disconnect_clicks,
     [Output('piranometer-table', 'data'),
      Output('cr1000-table', 'data'),
      Output('data-graph', 'figure'),
-     Output('data-store', 'data')],
+     Output('data-store', 'data'),],
     Input('update-interval', 'n_intervals'),
     State('connection-store', 'data'),
     prevent_initial_call=True
@@ -598,9 +599,8 @@ def update_data(n_intervals, connection_data):
         print(f"Erro: {str(e)}")
         raise PreventUpdate
 
-
 @app.callback(
-    Output("download-dataframe-xlsx", "data"),
+    Output("download-excel", "data"),
     Input("export-btn", "n_clicks"),
     prevent_initial_call=True
 )
@@ -609,12 +609,11 @@ def export_to_excel(n_clicks):
 
     # Cria buffer em memória
     output = io.BytesIO()
+    output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         historical_data.to_excel(writer, sheet_name='Dados', index=False)
-        writer.save()
-        output.seek(0)
+    output.seek(0)  # Move o ponteiro para o início do buffer
 
-    # Envia arquivo para download
     return dcc.send_bytes(output.read(), filename="dados_coletados.xlsx")
 
 if __name__ == '__main__':
