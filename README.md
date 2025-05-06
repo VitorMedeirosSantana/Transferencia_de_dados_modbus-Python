@@ -16,4 +16,4 @@ Digitar os seguintes comandos no terminal:
 
 ` cd Transferencia_de_dados_modbus-Python `
 
-` pip install -r requirements.txt ` 
+` pip install -r requerimentos.txt ` 
