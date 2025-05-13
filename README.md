@@ -6,6 +6,14 @@
 
 ### Bibliotecas utilizadas:
  * pymodbus
+ * pandas
+ * dash
+ * dash-bootstrap-components
+ * pyserial
 
 ### Instalação
-pip install pymodbus
+Digitar os seguintes comandos no terminal:
+
+` cd Transferencia_de_dados_modbus-Python `
+
+` pip install -r requerimentos.txt ` 

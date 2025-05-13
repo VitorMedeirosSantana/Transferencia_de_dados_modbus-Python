@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 from pymodbus.client.serial import ModbusSerialClient
 import dash
-from dash import dcc, html, Input, Output, State, dash_table, no_update
+from dash import dcc, html, Input, Output, State, dash_table
 import dash_bootstrap_components as dbc
 import serial.tools.list_ports
 from dash.exceptions import PreventUpdate
@@ -619,4 +619,4 @@ def export_to_excel(n_clicks):
         return no_update
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)

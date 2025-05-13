@@ -1,1 +1,6 @@
 pymodbus
+pandas
+dash
+dash-bootstrap-components
+pyserial
+xlsxwriter
